@@ -177,4 +177,7 @@ vários TFCs de anos e cursos diferentes.
 ---
  
 ## 6. Uso de IA
-- ...
+- ### Projetos Pessoais vs Projetos de UC 
+Inicialmente, considerei separar os projetos em duas entidades distintas: projetos de Unidade Curricular e projetos pessoais. No entanto, após recorrer à IA, foi-me sugerida uma abordagem alternativa, utilizando uma única entidade `Projeto` com um atributo `tipo` para distinguir entre projetos de UC e pessoais.
+
+Esta solução revelou-se mais adequada, uma vez que ambos os tipos de projeto partilham praticamente os mesmos atributos. A separação em duas entidades iria introduzir redundância e duplicação de estrutura no modelo.
