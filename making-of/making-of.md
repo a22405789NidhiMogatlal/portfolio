@@ -33,7 +33,6 @@
 - nome
 - email
 - imagem
-- url
 
 ### Projetos
 - titulo
