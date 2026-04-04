@@ -56,8 +56,8 @@ class FormacaoAdmin(admin.ModelAdmin):
     ordering = ('-data_inicio',)
 
 class MakingOfAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'dataRegisto')
-    list_filter = ('licenciatura', 'uc')
+    list_display = ('titulo', 'entidade', 'dataRegisto')
+    list_filter = ('entidade',)
     search_fields = ('titulo',)
     ordering = ('-dataRegisto',)
 

@@ -129,7 +129,22 @@ class Formacao(models.Model):
         return self.titulo
     
 class MakingOf(models.Model):
+    ENTIDADE_CHOICES = [
+        ('licenciatura', 'Licenciatura'),
+        ('uc', 'Unidade Curricular'),
+        ('docente', 'Docente'),
+        ('projeto', 'Projeto'),
+        ('tecnologia', 'Tecnologia'),
+        ('tfc', 'TFC'),
+        ('competencia', 'Competência'),
+        ('categoria_competencia', 'Categoria Competência'),
+        ('formacao', 'Formação'),
+        ('makingof', 'MakingOf'),
+        ('geral', 'Geral'),
+    ]
+
     titulo = models.CharField(max_length=255)
+    entidade = models.CharField(max_length=50, choices=ENTIDADE_CHOICES, default='geral')
     descricao = models.TextField(blank=True)
     justificacao = models.TextField(blank=True)
     erros = models.TextField(blank=True)
@@ -137,12 +152,6 @@ class MakingOf(models.Model):
     usoIa = models.TextField(blank=True)
     foto = models.ImageField(upload_to='makingof/', blank=True, null=True)
     dataRegisto = models.DateField(auto_now_add=True)
-
-    licenciatura = models.ForeignKey('Licenciatura', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
-    uc = models.ForeignKey('UnidadeCurricular', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
-    projeto = models.ForeignKey('Projeto', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
-    competencia = models.ForeignKey('Competencia', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
-    tfc = models.ForeignKey('Tfc', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
 
     def __str__(self):
         return self.titulo
