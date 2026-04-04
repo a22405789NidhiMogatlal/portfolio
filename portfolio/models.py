@@ -128,6 +128,21 @@ class Formacao(models.Model):
     def __str__(self):
         return self.titulo
     
+class MakingOf(models.Model):
+    titulo = models.CharField(max_length=255)
+    descricao = models.TextField()
+    justificacao = models.TextField()
+    erros = models.TextField(blank=True)
+    correcoes = models.TextField(blank=True)
+    usoIa = models.TextField(blank=True)
+    foto = models.ImageField(upload_to='makingof/', blank=True, null=True)
+    dataRegisto = models.DateField(auto_now_add=True)
 
+    licenciatura = models.ForeignKey('Licenciatura', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
+    uc = models.ForeignKey('UnidadeCurricular', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
+    projeto = models.ForeignKey('Projeto', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
+    competencia = models.ForeignKey('Competencia', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
+    tfc = models.ForeignKey('Tfc', on_delete=models.SET_NULL, null=True, blank=True, related_name='makingof')
 
-
+    def __str__(self):
+        return self.titulo

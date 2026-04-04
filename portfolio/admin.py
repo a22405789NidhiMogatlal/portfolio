@@ -55,6 +55,11 @@ class FormacaoAdmin(admin.ModelAdmin):
     search_fields = ('titulo', 'instituicao')
     ordering = ('-data_inicio',)
 
+class MakingOfAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'dataRegisto')
+    list_filter = ('licenciatura', 'uc')
+    search_fields = ('titulo',)
+    ordering = ('-dataRegisto',)
 
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
@@ -65,3 +70,4 @@ admin.site.register(CategoriaCompetencia,CategoriaCompetenciaAdmin)
 admin.site.register(Tfc,TfcAdmin)
 admin.site.register(Projeto,ProjetoAdmin)
 admin.site.register(Formacao,FormacaoAdmin)
+admin.site.register(MakingOf,MakingOfAdmin)
