@@ -61,7 +61,19 @@ class Tecnologia(models.Model):
     def __str__(self):
         return self.nome
 
+class CategoriaCompetencia(models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.nome
+
+class Competencia(models.Model):
+    nome = models.CharField(max_length=255)
+    categoria = models.ForeignKey('CategoriaCompetencia', on_delete=models.SET_NULL,null=True,blank=True,related_name='competencias' )
+
+    def __str__(self):
+        return self.nome
 
 
 

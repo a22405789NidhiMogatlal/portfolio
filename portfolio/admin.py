@@ -21,10 +21,24 @@ class UnidadeCurricularAdmin(admin.ModelAdmin):
 class TecnologiaAdmin(admin.ModelAdmin):
     list_display=('nome','nivel',)
     search_fields=('nome',)
+    list_filter = ('tipo',)
     ordering=('nome',)
+
+class CategoriaCompetenciaAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+    ordering = ('nome',)
+
+class CompetenciaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'categoria',)
+    list_filter = ('categoria',)
+    search_fields = ('nome',)
+    ordering = ('nome',)
 
 
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
 admin.site.register(UnidadeCurricular,UnidadeCurricularAdmin)
 admin.site.register(Tecnologia,TecnologiaAdmin)
+admin.site.register(Competencia,CompetenciaAdmin)
+admin.site.register(CategoriaCompetencia,CategoriaCompetenciaAdmin)
