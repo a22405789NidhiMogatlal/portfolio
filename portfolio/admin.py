@@ -18,8 +18,13 @@ class UnidadeCurricularAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
     filter_horizontal = ('licenciaturas', 'docentes',)
 
+class TecnologiaAdmin(admin.ModelAdmin):
+    list_display=('nome','nivel',)
+    search_fields=('nome',)
+    ordering=('nome',)
+
 
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
 admin.site.register(UnidadeCurricular,UnidadeCurricularAdmin)
-
+admin.site.register(Tecnologia,TecnologiaAdmin)

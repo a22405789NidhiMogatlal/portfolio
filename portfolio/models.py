@@ -20,7 +20,6 @@ class Docente(models.Model):
         return self.nome
 
 
-
 class UnidadeCurricular(models.Model):
     nome=models.CharField(max_length=255)
     ano=models.IntegerField()
@@ -32,6 +31,42 @@ class UnidadeCurricular(models.Model):
     docentes=models.ManyToManyField(Docente,blank=True,related_name="unidadesCurriculares")
     def __str__(self):
         return self.nome
+
+class Tecnologia(models.Model):
+    TIPO_CHOICES=[
+        ('linguagem','Linguagem de Programação'),
+        ('framework', 'Framework'),
+        ('base_dados', 'Base de Dados'),
+        ('ferramenta', 'Ferramenta'),
+        ('devops', 'DevOps'),
+        ('outro', 'Outro'),
+    ]
+
+    NIVEL_CHOICES=[
+        (1, '1 - Básico'),
+        (2, '2 - Elementar'),
+        (3, '3 - Intermédio'),
+        (4, '4 - Avançado'),
+        (5, '5 - Especialista'), 
+
+    ]
+
+    nome=models.CharField(max_length=255)
+    tipo=models.CharField(max_length=50,choices=TIPO_CHOICES)
+    logo=models.ImageField(upload_to='tecnologias/',blank=True,null=True)
+    urlSite = models.URLField(blank=True)
+    nivel=models.IntegerField(choices=NIVEL_CHOICES)
+    aspetosRelavantes=models.TextField(blank=True)
+
+    def __str__(self):
+        return self.nome
+
+
+
+
+
+
+    
 
 
 
