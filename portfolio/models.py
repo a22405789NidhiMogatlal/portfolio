@@ -70,7 +70,7 @@ class CategoriaCompetencia(models.Model):
 
 class Competencia(models.Model):
     nome = models.CharField(max_length=255)
-    categoria = models.ForeignKey('CategoriaCompetencia', on_delete=models.SET_NULL,null=True,blank=True,related_name='competencias' )
+    categoria = models.ForeignKey('CategoriaCompetencia', on_delete=models.SET_NULL,  null=True,blank=True,related_name='competencias' )
 
     def __str__(self):
         return self.nome
@@ -96,7 +96,37 @@ class Tfc(models.Model):
     tecnologia=models.ManyToManyField(Tecnologia,related_name='tfcs')
 
 
+class Projeto(models.Model):
+    TIPO_CHOICES = [
+        ('UC', 'Unidade Curricular'),
+        ('PESSOAL', 'Pessoal'),
+    ]
 
+    titulo = models.CharField(max_length=255)
+    descricao = models.TextField()
+    urlVideo = models.URLField(blank=True)
+    imagem = models.ImageField(upload_to='projetos/', blank=True)
+    conceitos = models.TextField(blank=True)
+    urlGithub = models.URLField(blank=True)
+    tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
+
+    tecnologias = models.ManyToManyField(Tecnologia, blank=True, related_name='projetos')
+    uc = models.ForeignKey('UnidadeCurricular', on_delete=models.SET_NULL, null=True,blank=True,related_name='projetos')
+
+    def __str__(self):
+        return self.titulo
+
+
+class Formacao(models.Model):
+    titulo = models.CharField(max_length=255)
+    instituicao = models.CharField(max_length=255, blank=True)
+    data_inicio = models.DateField(blank=True, null=True)
+    data_conclusao = models.DateField(blank=True, null=True)
+    certificado = models.ImageField(upload_to='certificados/', blank=True)
+
+
+    def __str__(self):
+        return self.titulo
     
 
 

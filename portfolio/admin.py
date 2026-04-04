@@ -42,6 +42,20 @@ class TfcAdmin(admin.ModelAdmin):
     ordering = ('-classificacao', 'titulo')
     filter_horizontal = ('licenciatura', 'tecnologia')
 
+class ProjetoAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'tipo', 'uc')
+    list_filter = ('tipo', 'uc')
+    search_fields = ('titulo',)
+    ordering = ('titulo',)
+    filter_horizontal = ('tecnologias',)
+
+
+class FormacaoAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'instituicao', 'data_inicio', 'data_conclusao')
+    search_fields = ('titulo', 'instituicao')
+    ordering = ('-data_inicio',)
+
+
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
 admin.site.register(UnidadeCurricular,UnidadeCurricularAdmin)
@@ -49,3 +63,5 @@ admin.site.register(Tecnologia,TecnologiaAdmin)
 admin.site.register(Competencia,CompetenciaAdmin)
 admin.site.register(CategoriaCompetencia,CategoriaCompetenciaAdmin)
 admin.site.register(Tfc,TfcAdmin)
+admin.site.register(Projeto,ProjetoAdmin)
+admin.site.register(Formacao,FormacaoAdmin)

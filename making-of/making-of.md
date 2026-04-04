@@ -62,7 +62,7 @@
 - imagem
 - resumo
 - áreas
-- classificação por linguagem favorita
+- classificação 
 
 
 ### Competencia
@@ -79,10 +79,6 @@
 - data fim
 - certificado
 
-### Projetos Pessoais
-- titulo
-- descrição
-- url github
 
 ### MakingOf
 - entidade
