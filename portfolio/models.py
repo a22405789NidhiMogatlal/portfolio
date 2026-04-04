@@ -75,6 +75,25 @@ class Competencia(models.Model):
     def __str__(self):
         return self.nome
 
+class Tfc(models.Model): 
+    
+    CLASSIFICACAO_CHOICES = [
+        (1, '1 - Pouco interessante'),
+        (2, '2 - Interessante'),
+        (3, '3 - Moderadamente interessante'),
+        (4, '4 - Muito interessante'),
+        (5, '5 - Extremamente interessante'),
+    ]
+    titulo = models.CharField(max_length=255)
+    aluno = models.CharField(max_length=255)
+    orientador = models.CharField(max_length=255, blank=True)
+    ano = models.IntegerField()
+    url_relatorio = models.URLField(blank=True)
+    email = models.EmailField(blank=True)
+    imagem = models.ImageField(upload_to='tfcs/', blank=True, null=True)
+    classificacao = models.IntegerField(choices=CLASSIFICACAO_CHOICES, default=3)
+    licenciatura=models.ManyToManyField(Licenciatura,related_name='tfcs')
+    tecnologia=models.ManyToManyField(Tecnologia,related_name='tfcs')
 
 
 

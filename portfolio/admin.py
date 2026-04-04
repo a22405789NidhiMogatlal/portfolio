@@ -35,6 +35,12 @@ class CompetenciaAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
     ordering = ('nome',)
 
+class TfcAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'aluno', 'orientador', 'ano', 'classificacao')
+    list_filter = ('ano', 'classificacao', 'licenciatura')
+    search_fields = ('titulo', 'aluno', 'orientador')
+    ordering = ('-classificacao', 'titulo')
+    filter_horizontal = ('licenciatura', 'tecnologia')
 
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
@@ -42,3 +48,4 @@ admin.site.register(UnidadeCurricular,UnidadeCurricularAdmin)
 admin.site.register(Tecnologia,TecnologiaAdmin)
 admin.site.register(Competencia,CompetenciaAdmin)
 admin.site.register(CategoriaCompetencia,CategoriaCompetenciaAdmin)
+admin.site.register(Tfc,TfcAdmin)
