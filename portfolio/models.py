@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Licenciatura(models.Model):
-    nome=models.CharField(max_length=255)
-    duracao=models.IntegerField()
-    urlSite=models.CharField(max_length=255)
-    objetivos=models.TextField()
+    nome=models.CharField(max_length=255,)
+    duracao=models.IntegerField(blank=True, null=True)
+    urlSite=models.CharField(max_length=255, blank=True)
+    objetivos=models.TextField(blank=True)
     
     def __str__(self):
         return self.nome
@@ -22,11 +22,11 @@ class Docente(models.Model):
 
 class UnidadeCurricular(models.Model):
     nome=models.CharField(max_length=255)
-    ano=models.IntegerField()
-    semestre=models.IntegerField()
-    ects=models.IntegerField()
-    apresentacao=models.TextField()
-    programa=models.TextField()
+    ano=models.IntegerField(blank=True)
+    semestre=models.IntegerField(blank=True)
+    ects=models.IntegerField(blank=True)
+    apresentacao=models.TextField(blank=True)
+    programa=models.TextField(blank=True)
     licenciaturas=models.ManyToManyField(Licenciatura,blank=True,related_name="unidadesCurriculares")
     docentes=models.ManyToManyField(Docente,blank=True,related_name="unidadesCurriculares")
     def __str__(self):
@@ -103,7 +103,7 @@ class Projeto(models.Model):
     ]
 
     titulo = models.CharField(max_length=255)
-    descricao = models.TextField()
+    descricao = models.TextField(blank=True)
     urlVideo = models.URLField(blank=True)
     imagem = models.ImageField(upload_to='projetos/', blank=True)
     conceitos = models.TextField(blank=True)
@@ -130,8 +130,8 @@ class Formacao(models.Model):
     
 class MakingOf(models.Model):
     titulo = models.CharField(max_length=255)
-    descricao = models.TextField()
-    justificacao = models.TextField()
+    descricao = models.TextField(blank=True)
+    justificacao = models.TextField(blank=True)
     erros = models.TextField(blank=True)
     correcoes = models.TextField(blank=True)
     usoIa = models.TextField(blank=True)
