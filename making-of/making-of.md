@@ -7,8 +7,21 @@
 ---
  
 ## 2. Diagrama Entidade-Relacionamento (DER)
+
+## Versão 1
  
 ![DER v1](/making-of/images/modeloER.jpeg)
+
+
+## Versão 2
+ 
+![DER v2](/making-of/images/V2.jpeg)
+
+**Justificação:** Os orientadores dos TFCs são docentes da Lusófona, 
+pelo que faz sentido ligá-los à entidade Docente em vez de guardar 
+como texto simples. Esta alteração permite relacionar TFCs com Docentes 
+e futuramente adicionar mais informação sobre cada orientador.
+
  
 ---
 
