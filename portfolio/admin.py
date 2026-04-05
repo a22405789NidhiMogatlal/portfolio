@@ -36,9 +36,9 @@ class CompetenciaAdmin(admin.ModelAdmin):
     ordering = ('nome',)
 
 class TfcAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'aluno', 'orientador', 'ano', 'classificacao')
+    list_display = ('titulo', 'alunos', 'orientadores', 'ano', 'classificacao')
     list_filter = ('ano', 'classificacao', 'licenciatura')
-    search_fields = ('titulo', 'aluno', 'orientador')
+    search_fields = ('titulo', 'alunos', 'orientadores')
     ordering = ('-classificacao', 'titulo')
     filter_horizontal = ('licenciatura', 'tecnologia')
 

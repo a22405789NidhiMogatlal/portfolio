@@ -52,10 +52,10 @@ class Tecnologia(models.Model):
     ]
 
     nome=models.CharField(max_length=255)
-    tipo=models.CharField(max_length=50,choices=TIPO_CHOICES)
+    tipo=models.CharField(max_length=50,choices=TIPO_CHOICES,blank=True)
     logo=models.ImageField(upload_to='tecnologias/',blank=True,null=True)
     urlSite = models.URLField(blank=True)
-    nivel=models.IntegerField(choices=NIVEL_CHOICES)
+    nivel=models.IntegerField(choices=NIVEL_CHOICES,blank=True,default=3)
     aspetosRelavantes=models.TextField(blank=True)
 
     def __str__(self):
@@ -85,11 +85,12 @@ class Tfc(models.Model):
         (5, '5 - Extremamente interessante'),
     ]
     titulo = models.CharField(max_length=255)
-    aluno = models.CharField(max_length=255)
-    orientador = models.CharField(max_length=255, blank=True)
+    alunos = models.TextField(max_length=255, blank=True)
+    orientadores = models.TextField(max_length=255, blank=True)
     ano = models.IntegerField()
     url_relatorio = models.URLField(blank=True)
     email = models.EmailField(blank=True)
+    areas=models.TextField(blank=True)
     imagem = models.ImageField(upload_to='tfcs/', blank=True, null=True)
     classificacao = models.IntegerField(choices=CLASSIFICACAO_CHOICES, default=3)
     licenciatura=models.ManyToManyField(Licenciatura,related_name='tfcs')
