@@ -1,10 +1,11 @@
 import json
 
-from portfolio.models import Tfc,Licenciatura,Tecnologia
+from portfolio.models import Tfc,Licenciatura,Tecnologia,Docente
 
 Tfc.objects.all().delete()
 Licenciatura.objects.all().delete()
 Tecnologia.objects.all().delete()
+Docente.objects.all().delete() 
 
 with open('data/tfcs_2024_2025.json') as f:
     tfcs=json.load(f)
@@ -14,9 +15,9 @@ for item in tfcs:
     titulo=item['titulo']
     
     alunos=item['alunos']
-    print(alunos)
+    
     orientadores=item['orientadores']
-    print(orientadores)
+    
 
     linha_lic=item['licenciatura']
     partes=linha_lic.split('.')
@@ -38,6 +39,11 @@ for item in tfcs:
         lics.append(lic)
     
 
+    docs = []
+    for nome_orientador in orientadores:
+        doc, _ = Docente.objects.get_or_create(nome=nome_orientador)
+        docs.append(doc)
+
     tecs = []
     for nome_tec in tecnologias:
         tec,_= Tecnologia.objects.get_or_create(nome=nome_tec)
@@ -46,7 +52,6 @@ for item in tfcs:
         titulo=titulo,
         defaults={
             'alunos': ', '.join(alunos),
-            'orientadores': ', '.join(orientadores),
             'ano': int(ano_lic) if ano_lic.isdigit() else 2025,
             'url_relatorio':pdf,
             'email': email,
@@ -60,6 +65,8 @@ for item in tfcs:
         tfc.licenciatura.add(lic)
     for tec in tecs:
         tfc.tecnologia.add(tec)
+    for doc in docs:
+        tfc.orientadores.add(doc)
     
   
 
