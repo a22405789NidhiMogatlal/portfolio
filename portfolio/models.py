@@ -86,7 +86,7 @@ class Tfc(models.Model):
     ]
     titulo = models.CharField(max_length=255)
     alunos = models.TextField(max_length=255, blank=True)
-    orientadores = models.TextField(max_length=255, blank=True)
+    orientadores= models.ManyToManyField(Docente, blank=True, related_name='tfcs')
     ano = models.IntegerField()
     url_relatorio = models.URLField(blank=True)
     email = models.EmailField(blank=True)
