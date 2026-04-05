@@ -7,20 +7,8 @@
 ---
  
 ## 2. Diagrama Entidade-Relacionamento (DER)
-
-## Versão 1
  
 ![DER v1](/making-of/images/modeloER.jpeg)
-
-
-## Versão 2
- 
-![DER v2](/making-of/images/V2.jpeg)
-
-**Justificação:** Os orientadores dos TFCs são docentes da Lusófona, 
-pelo que faz sentido ligá-los à entidade Docente em vez de guardar 
-como texto simples. Esta alteração permite relacionar TFCs com Docentes 
-e futuramente adicionar mais informação sobre cada orientador.
 
  
 ---
@@ -165,22 +153,32 @@ vários TFCs de anos e cursos diferentes.
 ---
  
 ## 3. Evolução do Modelo
+ ## Versão 2
  
+![DER v2](/making-of/images/V2.jpeg)
+
+**Justificação:** Os orientadores dos TFCs são docentes da Lusófona, 
+pelo que faz sentido ligá-los à entidade Docente em vez de guardar 
+como texto simples. Esta alteração permite relacionar TFCs com Docentes 
+e futuramente adicionar mais informação sobre cada orientador.
 
  
 ---
  
 ## 4. Erros Identificados e Correções
- 
-### Erro 1
-- **Descrição:** ...
-- **Correção:** ...
- 
+
 
 ---
  
 ## 5. Apontamentos e Notas
-> 
+> **Nota:** Os registos do MakingOf foram sendo criados ao longo do 
+> desenvolvimento à medida que iam surgindo erros, alterações e decisões 
+> de modelação. Considerou-se mais prático registar cada ocorrência no 
+> momento em que acontecia, em vez de documentar tudo no final — desta 
+> forma o Making Of reflete o processo real de desenvolvimento. As 
+> alterações, erros e justificações detalhadas encontram-se nos registos 
+> da entidade MakingOf diretamente no projeto portfolio, tendo este 
+> ficheiro servido apenas como rascunho inicial e referência de apoio.
  
 ---
  

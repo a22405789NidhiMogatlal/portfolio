@@ -16,12 +16,15 @@ licenciatura, _ = Licenciatura.objects.get_or_create(
 )
 
 for teacher in data.get('teachers', []):
-    docente, _ = Docente.objects.get_or_create(
+    docente, created = Docente.objects.get_or_create(
         nome=teacher['fullName'],
         defaults={
             'email': teacher.get('email', ''),
         }
     )
+    if not created and not docente.email: #Para o caso dos professor criados no script do TFC aqui atualizo o campo 
+        docente.email = teacher.get('email', '')
+        docente.save()
     
 
 
