@@ -16,6 +16,7 @@ class UnidadeCurricularAdmin(admin.ModelAdmin):
     list_display = ('nome', 'ano', 'semestre', 'ects',)
     list_filter = ('ano', 'semestre',)
     search_fields = ('nome',)
+    ordering = ('nome',)
     filter_horizontal = ('licenciaturas', 'docentes',)
 
 class TecnologiaAdmin(admin.ModelAdmin):
