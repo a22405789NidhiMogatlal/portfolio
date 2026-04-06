@@ -8,7 +8,7 @@
  
 ## 2. Diagrama Entidade-Relacionamento (DER)
  
-![DER v1](/making-of/images/modeloER.jpeg)
+![DER v3](/making-of/images/V3.jpeg)
 
  
 ---
@@ -188,6 +188,11 @@ O campo choices inclui todas as entidades do projeto:
 ---
  
 ## 3. Evolução do Modelo
+
+ ## Versão Original
+
+![DER v1](/making-of/images/modeloER.jpeg)
+
  ## Versão 2
  
 ![DER v2](/making-of/images/V2.jpeg)
