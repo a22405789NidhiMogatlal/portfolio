@@ -81,6 +81,16 @@
 - data fim
 - certificado
 
+### Evento
+- nome
+- tipo (choices: Hackathon, Voluntariado, Competição, Conferência, Workshop, Outro)
+- papel (choices: Participante, Organizador, Voluntário, Orador)
+- descricao
+- data
+- local
+- url
+- imagem
+
 
 ### MakingOf
 - entidade
@@ -146,6 +156,20 @@ vários TFCs de anos e cursos diferentes.
 ### Competencia ↔ Tecnologia (N:N)
 - Uma competência está frequentemente ligada a várias tecnologias e vice-versa. 
 
+### Evento ↔ Tecnologia (N:N)
+- Um evento pode usar várias tecnologias, por exemplo num hackathon 
+  podem ser usadas Python, Django e React em simultâneo.
+- Uma tecnologia pode estar em vários eventos, Python por exemplo 
+  pode ter sido usada em vários hackathons ao longo do tempo.
+
+### Evento ↔ Competencia (N:N)
+- Um evento pode desenvolver várias competências, por exemplo num 
+  hackathon desenvolvem-se competências de trabalho em equipa, 
+  resolução de problemas e programação.
+- Uma competência pode estar associada a vários eventos, a competência 
+  "trabalho em equipa" pode ter sido desenvolvida em vários voluntariados 
+  e hackathons.
+
 
 ### MakingOf — Relações com outras entidades
 
@@ -172,6 +196,20 @@ O campo choices inclui todas as entidades do projeto:
 pelo que faz sentido ligá-los à entidade Docente em vez de guardar 
 como texto simples. Esta alteração permite relacionar TFCs com Docentes 
 e futuramente adicionar mais informação sobre cada orientador.
+
+ ## Versão 3
+ 
+![DER v3](/making-of/images/V3.jpeg)
+**Justificação:**
+- Foi adicionada a entidade `Evento` para registar participações em 
+hackathons, voluntariado, competições, conferências e workshops.
+- Um portfólio profissional deve refletir não só o 
+percurso académico mas também atividades extracurriculares. Eventos 
+como hackathons e voluntariado demonstram iniciativa e trabalho em 
+equipa,competências valorizadas em entrevistas de emprego.
+
+
+
 
  
 ---
