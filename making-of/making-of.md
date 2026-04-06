@@ -214,12 +214,33 @@ como hackathons e voluntariado demonstram iniciativa e trabalho em
 equipa,competências valorizadas em entrevistas de emprego.
 
 
-
-
  
 ---
  
 ## 4. Erros Identificados e Correções
+
+###  Duplicação de docentes entre TFCs e API da Lusófona
+
+Durante o desenvolvimento foram identificados docentes duplicados na 
+base de dados. Quando foi decidido ligar os orientadores dos TFCs à 
+entidade `Docente`, o script criou docentes com base nos nomes do JSON 
+dos TFCs e estes ficaram com as relações aos TFCs mas sem email. 
+Posteriormente, ao importar os dados da API da Lusófona, foram criados 
+novos docentes com nome completo e com email mas sem as relações aos TFCs.
+
+O problema surgiu porque não existe um identificador comum entre as 
+duas fontes, um docente pode aparecer como "Martijn Kuipers" nos TFCs 
+e "Berend Willem Martijn Kuipers" na API da Lusófona.
+
+**Uso de IA:** Recorri à IA para tentar resolver o problema. A IA sugeriu 
+fazer merge automático dos docentes com base no apelido. No entanto, não 
+apliquei esta solução por ser arriscada, podem existir docentes diferentes 
+com o mesmo apelido, o que poderia fundir registos incorretamente.
+
+**Correção:** Em casos mais evidentes como o Prof. Martijn Kuipers e o 
+Prof. Bruno Cipriano, a correção foi feita manualmente, ou seja, o email foi 
+copiado para o docente com as relações aos TFCs e o duplicado foi eliminado. 
+Os restantes casos ficaram por resolver devido ao risco de merge incorreto.
 
 
 ---
@@ -228,7 +249,7 @@ equipa,competências valorizadas em entrevistas de emprego.
 > **Nota:** Os registos do MakingOf foram sendo criados ao longo do 
 > desenvolvimento à medida que iam surgindo erros, alterações e decisões 
 > de modelação. Considerou-se mais prático registar cada ocorrência no 
-> momento em que acontecia, em vez de documentar tudo no final — desta 
+> momento em que acontecia, em vez de documentar tudo no final, desta 
 > forma o Making Of reflete o processo real de desenvolvimento. As 
 > alterações, erros e justificações detalhadas encontram-se nos registos 
 > da entidade MakingOf diretamente no projeto portfolio, tendo este 
