@@ -140,6 +140,7 @@ class MakingOf(models.Model):
         ('competencia', 'Competência'),
         ('categoria_competencia', 'Categoria Competência'),
         ('formacao', 'Formação'),
+        ('evento', 'Evento'),
         ('makingof', 'MakingOf'),
         ('geral', 'Geral'),
     ]

@@ -70,8 +70,9 @@
 - nome
 - categoria
 
-### Categoria
+### Categoria Competencia
 - nome
+- descricao
 
 ### Formação
 - titulo
@@ -146,10 +147,20 @@ vários TFCs de anos e cursos diferentes.
 - Uma competência está frequentemente ligada a várias tecnologias e vice-versa. 
 
 
-### MakingOf ↔ Outras Entidades (N:1)
-- Optei por relacioná-la apenas com `Licenciatura`, `UnidadeCurricular`, `Projeto`, `Competencia` e `TFC`, por serem as entidades mais importantes e com maior necessidade de decisões de modelação.
-- As restantes entidades (`Docente`, `Tecnologia` e `Formacao`) não foram incluídas, pois são mais simples e descritivas, não exigindo registo detalhado no MakingOf.
+### MakingOf — Relações com outras entidades
 
+Optei por usar um campo `choices` com o nome da entidade em vez de 
+ForeignKeys individuais. A abordagem com ForeignKeys ligava o registo 
+a uma instância específica (ex: "Licenciatura em Engenharia Informática") 
+quando o objetivo era documentar alterações ao modelo em geral 
+(ex: "Licenciatura"). O campo `choices` é mais adequado porque permite 
+identificar qual entidade foi afetada sem criar dependências desnecessárias, 
+sendo também mais simples e flexível.
+
+O campo choices inclui todas as entidades do projeto:
+- Licenciatura, Unidade Curricular, Projeto, Tecnologia, TFC
+- Competência, Categoria Competência, Formação, Evento
+- MakingOf, Geral (para decisões que afetam várias entidades)
 ---
  
 ## 3. Evolução do Modelo
@@ -187,3 +198,9 @@ e futuramente adicionar mais informação sobre cada orientador.
 Inicialmente, considerei separar os projetos em duas entidades distintas: projetos de Unidade Curricular e projetos pessoais. No entanto, após recorrer à IA, foi-me sugerida uma abordagem alternativa, utilizando uma única entidade `Projeto` com um atributo `tipo` para distinguir entre projetos de UC e pessoais.
 
 Esta solução revelou-se mais adequada, uma vez que ambos os tipos de projeto partilham praticamente os mesmos atributos. A separação em duas entidades iria introduzir redundância e duplicação de estrutura no modelo.
+
+- ### Modelação do Making of
+A IA ajudou a traduzir a ideia que eu tinha em código. 
+Sabia que queria um campo simples para identificar a entidade afetada, 
+sem relações para instâncias específicas, mas não sabia como implementar. 
+A IA sugeriu o campo `choices` que correspondia exatamente ao que pretendia.
