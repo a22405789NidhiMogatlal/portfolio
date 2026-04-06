@@ -156,3 +156,34 @@ class MakingOf(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Evento(models.Model):
+    TIPO_CHOICES = [
+        ('hackathon', 'Hackathon'),
+        ('voluntariado', 'Voluntariado'),
+        ('competicao', 'Competição'),
+        ('conferencia', 'Conferência'),
+        ('workshop', 'Workshop'),
+        ('outro', 'Outro'),
+    ]
+
+    PAPEL_CHOICES = [
+        ('participante', 'Participante'),
+        ('organizador', 'Organizador'),
+        ('voluntario', 'Voluntário'),
+        ('orador', 'Orador'),
+    ]
+
+    nome = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=50, choices=TIPO_CHOICES)
+    papel = models.CharField(max_length=50, choices=PAPEL_CHOICES)
+    descricao = models.TextField(blank=True)
+    data = models.DateField(blank=True, null=True)
+    local = models.CharField(max_length=255, blank=True)
+    url = models.URLField(blank=True)
+    imagem = models.ImageField(upload_to='eventos/', blank=True, null=True)
+    tecnologias = models.ManyToManyField('Tecnologia', blank=True, related_name='eventos')
+    competencias = models.ManyToManyField('Competencia', blank=True, related_name='eventos')
+
+    def __str__(self):
+        return self.nome

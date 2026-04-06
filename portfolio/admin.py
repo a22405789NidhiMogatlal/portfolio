@@ -62,6 +62,13 @@ class MakingOfAdmin(admin.ModelAdmin):
     search_fields = ('titulo',)
     ordering = ('-dataRegisto',)
 
+class EventoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'tipo', 'papel', 'data', 'local')
+    list_filter = ('tipo', 'papel')
+    search_fields = ('nome',)
+    ordering = ('-data',)
+    filter_horizontal = ('tecnologias', 'competencias')
+
 admin.site.register(Licenciatura,LicenciaturaAdmin)
 admin.site.register(Docente,DocenteAdmin)
 admin.site.register(UnidadeCurricular,UnidadeCurricularAdmin)
@@ -72,3 +79,4 @@ admin.site.register(Tfc,TfcAdmin)
 admin.site.register(Projeto,ProjetoAdmin)
 admin.site.register(Formacao,FormacaoAdmin)
 admin.site.register(MakingOf,MakingOfAdmin)
+admin.site.register(Evento,EventoAdmin)
