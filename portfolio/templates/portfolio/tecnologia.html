@@ -1,0 +1,28 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ tecnologia.nome }} </h2>
+
+<article>
+
+    {% if tecnologia.logo %}
+        <img src="{{ tecnologia.logo.url }}" width="120">
+    {% endif %}
+
+    <p><strong>Tipo:</strong> {{ tecnologia.get_tipo_display }}</p>
+    <p><strong>Nível:</strong> {{ tecnologia.get_nivel_display }}</p>
+
+    <p>{{ tecnologia.aspetosRelavantes }}</p>
+
+    {% if tecnologia.urlSite %}
+        <p>
+            <a href="{{ tecnologia.urlSite }}" target="_blank">
+                Website
+            </a>
+        </p>
+    {% endif %}
+
+</article>
+
+{% endblock %}

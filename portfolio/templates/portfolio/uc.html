@@ -1,0 +1,37 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ uc.nome }}</h2>
+
+
+    <p><strong>Ano:</strong> {{ uc.ano }}</p>
+    <p><strong>Semestre:</strong> {{ uc.semestre }}</p>
+    <p><strong>ECTS:</strong> {{ uc.ects }}</p>
+
+    <h3> Apresentação</h3>
+    <p>{{ uc.apresentacao }}</p>
+
+    <h3> Programa</h3>
+    <p>{{ uc.programa }}</p>
+
+    <h3> Licenciaturas</h3>
+    <ul>
+        {% for l in uc.licenciaturas.all %}
+            <li>{{ l.nome }}</li>
+        {% empty %}
+            <li>Sem licenciaturas associadas</li>
+        {% endfor %}
+    </ul>
+
+    <h3> Docentes</h3>
+    <ul>
+        {% for d in uc.docentes.all %}
+            <li>{{ d.nome }}</li>
+        {% empty %}
+            <li>Sem docentes associados</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

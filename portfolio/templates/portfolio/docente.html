@@ -1,0 +1,28 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ docente.nome }} </h2>
+
+<article>
+
+    {% if docente.imagem %}
+        <img src="{{ docente.imagem.url }}" width="180">
+    {% endif %}
+
+    <p><strong>Email:</strong> {{ docente.email }}</p>
+
+    <h3> Unidades Curriculares lecionadas </h3>
+    <ul>
+        {% for uc in docente.unidadesCurriculares.all %}
+            <li>
+                {{ uc.nome }}
+            </li>
+        {% empty %}
+            <li>Sem UCs associadas</li>
+        {% endfor %}
+    </ul>
+
+</article>
+
+{% endblock %}

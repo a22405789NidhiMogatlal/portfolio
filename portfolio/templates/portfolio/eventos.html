@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2> Eventos</h2>
+
+<section>
+    {% for e in eventos %}
+    <article>
+        <header>
+            <h3>{{ e.nome }}</h3>
+            <p>{{ e.get_tipo_display }} | {{ e.get_papel_display }}</p>
+        </header>
+
+        <p>{{ e.descricao }}</p>
+
+        {% if e.imagem %}
+            <img src="{{ e.imagem.url }}" width="200">
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

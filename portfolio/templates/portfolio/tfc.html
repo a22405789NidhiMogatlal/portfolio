@@ -1,0 +1,56 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ tfc.titulo }} </h2>
+
+<article>
+
+    {% if tfc.imagem %}
+        <img src="{{ tfc.imagem.url }}" width="200">
+    {% endif %}
+
+    <p><strong>Ano:</strong> {{ tfc.ano }}</p>
+    <p><strong>Classificação:</strong> {{ tfc.get_classificacao_display }}</p>
+
+    <p><strong>Alunos:</strong> {{ tfc.alunos }}</p>
+    <p><strong>Áreas:</strong> {{ tfc.areas }}</p>
+
+    {% if tfc.url_relatorio %}
+        <p>
+            📄 <a href="{{ tfc.url_relatorio }}" target="_blank">
+                Ver relatório
+            </a>
+        </p>
+    {% endif %}
+
+    <h3> Orientadores </h3>
+    <ul>
+        {% for d in tfc.orientadores.all %}
+            <li>{{ d.nome }}</li>
+        {% empty %}
+            <li>Sem orientadores</li>
+        {% endfor %}
+    </ul>
+
+    <h3> Licenciaturas</h3>
+    <ul>
+        {% for l in tfc.licenciatura.all %}
+            <li>{{ l.nome }}</li>
+        {% empty %}
+            <li>Sem licenciaturas associadas</li>
+        {% endfor %}
+    </ul>
+
+    <h3> Tecnologias</h3>
+    <ul>
+        {% for tech in tfc.tecnologia.all %}
+            <li>{{ tech.nome }}</li>
+        {% empty %}
+            <li>Sem tecnologias associadas</li>
+        {% endfor %}
+    </ul>
+
+</article>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ competencia.nome }}</h2>
+
+<article>
+
+    {% if competencia.categoria %}
+        <p><strong>Categoria:</strong> {{ competencia.categoria.nome }}</p>
+    {% endif %}
+
+    <h3> Categoria de Competências</h3>
+    <p>{{ competencia.categoria.descricao }}</p>
+
+
+</article>
+
+{% endblock %}

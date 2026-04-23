@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{ licenciatura.nome }}</h2>
+
+<article>
+    <p><strong>Duração:</strong> {{ licenciatura.duracao }} anos</p>
+
+    <p><strong>Objetivos:</strong></p>
+    <p>{{ licenciatura.objetivos }}</p>
+
+    {% if licenciatura.urlSite %}
+        <p>
+             <a href="{{ licenciatura.urlSite }}" target="_blank">
+                Site oficial
+            </a>
+        </p>
+    {% endif %}
+</article>
+
+{% endblock %}
