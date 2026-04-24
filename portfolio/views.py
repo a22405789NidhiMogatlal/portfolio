@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -8,6 +8,7 @@ def home(request):
 
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from .forms   import *
 
 
 def licenciaturas_view(request):
@@ -82,4 +83,16 @@ def eventos_view(request):
 
 def evento_view(request, id):
     evento = Evento.objects.get(id=id)  
-    return render(request, 'portfolio/evento.html', {'evento': evento})    
+    return render(request, 'portfolio/evento.html', {'evento': evento})   
+
+
+def projeto_novo(request):
+    form = ProjetoForm(request.POST or None,request.FILES)
+
+    if form.is_valid():
+        form.save()
+        return redirect('projetos')
+
+    context = {'form':form}
+
+    return render(request,'portfolio/projeto_novo.html',context)

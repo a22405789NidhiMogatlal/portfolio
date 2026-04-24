@@ -4,52 +4,16 @@
 
 <h2> Projetos </h2>
 
-<section class="projetos-container">
+<a href="{% url 'projeto_novos' %}"><button>Criar novo projeto</button></a>
 
-    {% for p in projetos %}
-    <article class="projeto-card">
-
-        
-        {% if p.imagem %}
-            <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}" class="projeto-img">
-        {% endif %}
-
-        <div class="projeto-info">
-                <h3>{{ p.titulo }}</h3>
-
-            <p class="projeto-desc">{{ p.descricao }}</p>
-            <p><strong>Tipo:</strong> 
-                {% if p.tipo == "UC" %}
-                UC - {{ p.uc.nome }}
-                {% else %}
-                Pessoal
-                {% endif %}
-            </p>
-
-            <p><strong>Conceitos:</strong> {{ p.conceitos }}</p>
-            
-            <p><strong> Tecnologias:</strong></p>
-                <ul>
-                    {% for t in p.tecnologias.all %}
-                        <li>{{ t.nome }}</li>
-                    {% endfor %}
-                </ul>
-
-                 <p><strong> GitHub:</strong> 
-                    <a href="{{ p.urlGithub }}" target="_blank">link</a>
-                </p>
-
-                <p><strong>Vídeo:</strong> 
-                    <a href="{{ p.urlVideo }}" target="_blank">Vídeo</a>
-                </p>
-                
-    
-
-        </div>
-
-    </article>
+<ul>
+    {% for projeto in projetos %}
+        <li>
+            <a href="{% url 'projeto' projeto.id %}">
+                {{ projeto.titulo }}
+            </a>
+        </li>
     {% endfor %}
-
-</section>
+</ul>
 
 {% endblock %}

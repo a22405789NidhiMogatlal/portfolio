@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #fffdf5; /* quase branco quente */
+    background-color: #f4f2e9; /* quase branco quente */
     color: #4a4a4a;
 
     display: flex;
@@ -59,7 +59,7 @@ h3 {
 
 
 article {
-    width: 500px;
+    width:100%;
     background-color: #fff9dc;
     border-left: 6px solid #ffd36b;
     border-radius: 12px;
@@ -97,6 +97,15 @@ img {
     margin-top: 10px;
 }
 
+.btn-amarelo {
+    background-color: #FFD700;
+    color: black;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-weight: bold;
+}
 
 footer {
     text-align: center;

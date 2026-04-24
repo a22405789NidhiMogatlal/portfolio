@@ -1,0 +1,53 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> {{projeto.titulo}}</h2>
+
+<section class="projetos-container">
+
+    <article class="projeto-card">
+
+        
+        {% if p.imagem %}
+            <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" class="projeto-img">
+        {% endif %}
+
+        <div class="projeto-info">
+                <h3>{{ projeto.titulo }}</h3>
+
+            <p class="projeto-desc">{{ projeto.descricao }}</p>
+            <p><strong>Tipo:</strong> 
+                {% if projeto.tipo == "UC" %}
+                UC - {{ projeto.uc.nome }}
+                {% else %}
+                Pessoal
+                {% endif %}
+            </p>
+
+            <p><strong>Conceitos:</strong> {{ projeto.conceitos }}</p>
+            
+            <p><strong> Tecnologias:</strong></p>
+                <ul>
+                    {% for t in projeto.tecnologias.all %}
+                        <li>{{ t.nome }}</li>
+                    {% endfor %}
+                </ul>
+
+                 <p><strong> GitHub:</strong> 
+                    <a href="{{ projeto.urlGithub }}" target="_blank">link</a>
+                </p>
+
+                <p><strong>Vídeo:</strong> 
+                    <a href="{{ projeto.urlVideo }}" target="_blank">Vídeo</a>
+                </p>
+                
+    
+
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

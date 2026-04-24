@@ -1,0 +1,18 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2>Criar novo projeto</h2>
+
+<form action="{% url 'projeto_novos' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+
+    <input type="submit" value="criar novo projeto">
+
+
+</form>
+
+{% endblock %}
+
