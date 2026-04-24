@@ -107,3 +107,12 @@ def tecnologia_novo_view(request):
     context = {'form':form}
 
     return render(request, 'portfolio/tecnologia_novos.html', {'form': form})
+
+def competencia_novo_view(request):
+    form = CompetenciaForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('competencias')
+    context={'form':form}
+    return render(request,'portfolio/competencia_novo.html',context)

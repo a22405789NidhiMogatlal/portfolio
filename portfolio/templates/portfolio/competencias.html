@@ -3,6 +3,8 @@
 {% block content %}
 <h2> Competências</h2>
 
+<a href="{% url 'competencia_novo' %}"><button>Criar Competência</button></a>
+
 <ul>
     {% for c in competencias %}
         <li>
