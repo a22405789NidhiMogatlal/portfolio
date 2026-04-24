@@ -3,6 +3,8 @@
 {% block content %}
 <h2> Tecnologias</h2>
 
+<a href="{% url 'tecnologia_novos' %}"><button>Criar Tecnologia</button></a>
+
 <ul>
     {% for t in tecnologias %}
         <li>

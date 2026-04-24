@@ -96,3 +96,14 @@ def projeto_novo(request):
     context = {'form':form}
 
     return render(request,'portfolio/projeto_novo.html',context)
+
+def tecnologia_novo_view(request):
+    form= TecnologiaForm(request.POST or None,request.FILES)
+
+    if form.is_valid():
+        form.save()
+        return redirect('tecnologias')
+
+    context = {'form':form}
+
+    return render(request, 'portfolio/tecnologia_novos.html', {'form': form})
