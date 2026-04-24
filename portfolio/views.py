@@ -116,3 +116,14 @@ def competencia_novo_view(request):
         return redirect('competencias')
     context={'form':form}
     return render(request,'portfolio/competencia_novo.html',context)
+
+def formacao_novo_view(request):
+    form= FormacaoForm(request.POST or None,request.FILES)
+
+    if form.is_valid():
+        form.save()
+        return redirect('formacoes')
+
+    context = {'form':form}
+
+    return render(request, 'portfolio/formacao_novo.html', {'form': form})

@@ -29,6 +29,7 @@ urlpatterns = [
     path('projetos/novo', views.projeto_novo, name='projeto_novos'),
 
     path('formacoes/', views.formacoes_view, name='formacoes'),
+    path('formacoes/novo', views.formacao_novo_view, name='formacao_novo'),
 
     path('makingofs/', views.makingofs_view, name='makingofs'),
 

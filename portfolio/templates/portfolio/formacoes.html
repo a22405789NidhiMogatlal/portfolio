@@ -3,6 +3,8 @@
 {% block content %}
 <h2> Formação</h2>
 
+<a href="{% url 'formacao_novo' %}"><button>Adicionar Formação</button></a>
+
 <section>
     {% for f in formacoes %}
     <article>

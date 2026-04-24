@@ -1,0 +1,11 @@
+{% extends "portfolio/base.html" %}
+
+{% block content%}
+<h2>Formação Nova</h2>
+<form action="{% url 'formacao_novo' %}" method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+ {{form.as_p}}
+<input type="submit" value="Criar Formação">
+</form>
+
+{% endblock %}
