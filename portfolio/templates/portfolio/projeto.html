@@ -8,6 +8,10 @@
 
     <article class="projeto-card">
 
+        <a href="{% url 'projeto_editar' projeto.id %}"><button>Editar</button>
+
+        <a href="{% url 'projeto_apagar' projeto.id %}"><button type="button">Apagar</button>
+
         
         {% if p.imagem %}
             <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" class="projeto-img">

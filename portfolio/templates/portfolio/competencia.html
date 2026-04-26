@@ -6,6 +6,9 @@
 
 <article>
 
+    <a href="{% url 'competencia_editar' competencia.id %}"><button>Editar</button></a>
+    <a href="{% url 'competencia_apagar' competencia.id %}"><button type="button">Apagar</button></a>
+
     {% if competencia.categoria %}
         <p><strong>Categoria:</strong> {{ competencia.categoria.nome }}</p>
     {% endif %}

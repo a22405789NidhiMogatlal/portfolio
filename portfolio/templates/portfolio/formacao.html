@@ -1,0 +1,45 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2>{{ formacao.titulo }}</h2>
+
+<section class="formacao-container">
+
+    <article class="formacao-card">
+
+        
+        <a href="{% url 'formacao_editar' formacao.id %}">
+            <button>Editar</button>
+        </a>
+        <a href="{% url 'formacao_apagar' formacao.id %}">
+            <button>Apagar</button>
+        </a>
+
+        {% if formacao.certificado %}
+            <img src="{{ formacao.certificado.url }}" 
+                 alt="Certificado de {{ formacao.titulo }}" 
+                 class="certificado-img">
+        {% endif %}
+
+        <div class="formacao-info">
+
+            <p><strong>Instituição:</strong> 
+                {{ formacao.instituicao|default:"(não indicado)" }}
+            </p>
+
+            <p><strong>Data de início:</strong> 
+                {{ formacao.data_inicio|date:"d/m/Y" }}
+            </p>
+
+            <p><strong>Data de conclusão:</strong> 
+                {{ formacao.data_conclusao|date:"d/m/Y" }}
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

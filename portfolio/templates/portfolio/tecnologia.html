@@ -6,6 +6,9 @@
 
 <article>
 
+    <a href="{% url 'tecnologia_editar' tecnologia.id %}"><button>Editar</button></a>
+    <a href="{% url 'tecnologia_apagar' tecnologia.id %}"><button>Apagar</button></a>
+
     {% if tecnologia.logo %}
         <img src="{{ tecnologia.logo.url }}" width="120">
     {% endif %}
