@@ -1,0 +1,11 @@
+{% extends "portfolio/base.html" %}
+
+{% block content%}
+<h2>Editar Nova</h2>
+<form action="{% url 'formacao_editar' formacao.id %}" method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+ {{form.as_p}}
+<input type="submit" value="Editar Formação">
+</form>
+
+{% endblock %}

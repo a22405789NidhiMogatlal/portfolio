@@ -85,6 +85,10 @@ def evento_view(request, id):
     evento = Evento.objects.get(id=id)  
     return render(request, 'portfolio/evento.html', {'evento': evento})   
 
+def formacao_view(request, id):
+    formacao = Formacao.objects.get(id=id)  
+    return render(request, 'portfolio/formacao.html', {'formacao': formacao})  
+
 
 def projeto_novo(request):
     form = ProjetoForm(request.POST or None,request.FILES)
@@ -127,3 +131,74 @@ def formacao_novo_view(request):
     context = {'form':form}
 
     return render(request, 'portfolio/formacao_novo.html', {'form': form})
+
+def editar_projeto_view(request, id):
+
+    projeto=Projeto.objects.get(id=id)
+
+    if request.POST:
+        form = ProjetoForm(request.POST or None,request.FILES, instance=projeto)
+        if form.is_valid:
+            form.save()
+            return redirect('projetos')
+    else:
+        form= ProjetoForm(instance=projeto)
+
+    context={'projeto':projeto,'form':form}
+    return render(request, 'portfolio/projeto_editar.html', context)
+
+def editar_tecnologia_view(request,id):
+    tecnologia= Tecnologia.objects.get(id=id)
+
+    if request.POST:
+        form=TecnologiaForm(request.POST or None,request.FILES,instance=tecnologia)
+        if form.is_valid:
+            form.save()
+            return redirect('tecnologias')
+    else:
+        form= TecnologiaForm(instance=tecnologia)
+    
+    context={'tecnologia':tecnologia,'form':form}
+    return render(request, 'portfolio/tecnologia_editar.html', context)
+
+def editar_competencia_view(request,id):
+    competencia = Competencia.objects.get(id=id)
+
+    if request.POST:
+        form = CompetenciaForm(request.POST or None,instance=competencia)
+        if form.is_valid():
+            form.save()
+            return redirect('competencias')
+    else:
+        form = CompetenciaForm(instance=competencia)
+    context={'competencia':competencia,'form':form}
+    return render(request,'portfolio/competencia_editar.html',context)
+
+def editar_formacao_view(request,id):
+    formacao=Formacao.objects.get(id=id)
+
+    if request.POST:
+        form = FormacaoForm(request.POST or None,request.FILES,instance=formacao)
+        if form.is_valid:
+            form.save()
+            return redirect('formacoes')
+    else:
+        form= FormacaoForm(instance=formacao)
+    context={'formacao':formacao,'form':form}
+    return render(request,'portfolio/formacao_editar.html',context)
+
+def apagar_projeto_view(request,id):
+    Projeto.objects.get(id=id).delete()
+    return redirect('projetos')
+
+def apagar_tecnologia_view(request,id):
+    Tecnologia.objects.get(id=id).delete()
+    return redirect('tecnologias')
+
+def apagar_formacao_view(request,id):
+    Formacao.objects.get(id=id).delete()
+    return redirect('formacoes')
+
+def apagar_competencia_view(request,id):
+    Competencia.objects.get(id=id).delete()
+    return redirect('competencias')

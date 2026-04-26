@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2>Editar projeto</h2>
+
+<form action="{% url 'projeto_editar' projeto.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+
+    <input type="submit" value="Gravar novo projeto">
+
+
+</form>
+
+{% endblock %}

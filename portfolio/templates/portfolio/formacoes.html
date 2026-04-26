@@ -8,7 +8,9 @@
 <section>
     {% for f in formacoes %}
     <article>
-        <h3>{{ f.titulo }}</h3>
+        <a href="{% url 'formacao' f.id %}">
+                {{ f.titulo }}
+            </a>
         <p>{{ f.instituicao }}</p>
         
         <p>{{ f.data_inicio }} → {{ f.data_conclusao }}</p>

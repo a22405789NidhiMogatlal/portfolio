@@ -1,0 +1,17 @@
+{%  extends 'portfolio/base.html' %}
+
+{% block content%}
+
+<h2>Editar Tecnologia</h2>
+
+<form action="{% url 'tecnologia_editar' tecnologia.id %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+
+<input type="submit" value="Gravar">
+
+</form>
+{% endblock %}
+
+
+
