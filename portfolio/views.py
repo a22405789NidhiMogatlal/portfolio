@@ -202,3 +202,6 @@ def apagar_formacao_view(request,id):
 def apagar_competencia_view(request,id):
     Competencia.objects.get(id=id).delete()
     return redirect('competencias')
+
+def sobre_view(request):
+    return render(request, 'portfolio/sobre.html')
