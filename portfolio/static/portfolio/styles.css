@@ -1,108 +1,104 @@
+/* Reset básico */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6fb;
     margin: 0;
-    background-color: #f4f2e9; /* quase branco quente */
-    color: #4a4a4a;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-
-header {
-    background: linear-gradient(90deg, #ffe8a3, #ffd36b);
-    padding: 20px;
-    text-align: center;
-    border-bottom: 3px solid #f7c948;
-}
-
-header h1 {
-    margin: 0;
-    color: #5a4300;
-}
-
-
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    margin: 0 12px;
-    text-decoration: none;
-    color: #5a4300;
-    font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background-color: #fff3b0;
-    color: #3a2a00;
-}
-
-main {
-    flex: 1;
-    padding: 25px;
-}
-
-
-h2 {
-    color: #c89b00;
-    margin-bottom: 20px;
-}
-
-h3 {
-    color: #a87b00;
-}
-
-
-article {
-    width:fit-content;
-    background-color: #fff9dc;
-    border-left: 6px solid #ffd36b;
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(255, 211, 107, 0.25);
-}
-
-
-ul {
-    list-style: none;
     padding: 0;
+    color: #2c2c2c;
 }
 
-li {
-    background-color: #fff3b0;
-    margin: 8px 10px; 
-    padding: 6px 10px;
-    border-radius: 8px;
-    width: fit-content;   
+/* Container principal */
+body > *:not(header) {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
+/* Título principal */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #3b3b6d;
+}
 
+/* Secções */
+h2 {
+    margin-top: 50px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #dcdcf5;
+    color: #4a4a7d;
+}
+
+/* Subtítulos */
+h3 {
+    margin-top: 25px;
+    color: #5a5a89;
+}
+
+/* Listas */
+ul, ol {
+    margin-top: 10px;
+    padding-left: 25px;
+    line-height: 1.6;
+}
+
+/* Blocos de conteúdo */
+section {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Imagens */
+img {
+    display: block;
+    max-width: 100%;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+/* Vídeo */
+iframe {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+/* Tecnologias (cards) */
+.tech-card {
+    background-color: #f9f9ff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #b8c0ff;
+}
+
+/* Nome tecnologia */
+.tech-card h4 {
+    margin: 0 0 5px 0;
+    color: #3b3b6d;
+}
+
+/* Texto */
+.tech-card p {
+    margin: 3px 0;
+    font-size: 0.95em;
+}
+
+/* Descrição */
+.tech-card .descricao {
+    margin-top: 8px;
+    color: #555;
+}
+
+/* Links */
 a {
-    color: #b8860b;
+    color: #5a5a89;
+    text-decoration: none;
 }
 
 a:hover {
-    color: #8b6508;
-}
-
-
-img {
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-
-
-footer {
-    text-align: center;
-    padding: 12px;
-    background-color: #ffe8a3;
-    margin-top: 30px;
-    color: #5a4300;
+    text-decoration: underline;
 }

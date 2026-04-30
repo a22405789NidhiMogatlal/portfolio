@@ -1,133 +1,170 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Sobre a Aplicação</title>
+    <link rel="stylesheet" href="{% static 'portfolio/sobre.css' %}">
 </head>
 
 <body>
 
-<h1>Sobre esta Aplicação</h1>
+<header>
+    <h1>Sobre esta Aplicação</h1>
 
-<hr>
+    <nav>
+        <ul>
+            <li><a href="#mvt">MVT</a></li>
+            <li><a href="#modelacao">Modelação</a></li>
+            <li><a href="#tecnologias">Tecnologias</a></li>
+            <li><a href="#estrutura">Estrutura</a></li>
+            <li><a href="#github">GitHub</a></li>
+            <li><a href="#makingof">Making-Of</a></li>
+        </ul>
+    </nav>
+</header>
 
-<!-- ===================================================== -->
-<h2 id="mvt">1. Arquitetura MVT do Django</h2>
-
-<h3>Desenho da Arquitetura</h3>
-<img src="/media/mvt.jpg" alt="Arquitetura MVT">
-
-<h3>Componentes</h3>
-<ul>
-    <li><b>Model:</b> Representa os dados e a base de dados.</li>
-    <li><b>View:</b> Trata da lógica e processa pedidos.</li>
-    <li><b>Template:</b> Define o que o utilizador vê.</li>
-</ul>
-
-<h3>Fluxo de Informação</h3>
-<ol>
-    <li>O utilizador faz um pedido</li>
-    <li>A View recebe o pedido</li>
-    <li>A View consulta o Model</li>
-    <li>O Model devolve os dados</li>
-    <li>A View envia os dados para o Template</li>
-    <li>O Template gera HTML</li>
-    <li>A resposta é enviada ao utilizador</li>
-</ol>
-
-<h3>Vídeo Tutorial</h3>
-<iframe width="560" height="315"
-    src="https://www.youtube.com/embed/SEU_VIDEO"
-    allowfullscreen>
-</iframe>
-
-<hr>
+<main>
 
 <!-- ===================================================== -->
-<h2 id="modelacao">2. Modelação</h2>
+<section id="mvt">
+    <h2>1. Arquitetura MVT do Django</h2>
 
-<h3>Diagrama Entidade-Relação</h3>
-<img src="/media/diagrama.jpg" alt="Diagrama ER">
+    <h3>Desenho da Arquitetura</h3>
+    <img src="/media/mvt.jpg" alt="Arquitetura MVT">
 
-<h3>models.py</h3>
+    <h3>Componentes</h3>
+    <ul>
+        <li><b>Model:</b> Representa os dados e a base de dados.</li>
+        <li><b>View:</b> Trata da lógica e processa pedidos.</li>
+        <li><b>Template:</b> Define o que o utilizador vê.</li>
+    </ul>
+
+    <h3>Fluxo de Informação</h3>
+    <ol>
+        <li>O utilizador faz um pedido</li>
+        <li>A View recebe o pedido</li>
+        <li>A View consulta o Model</li>
+        <li>O Model devolve os dados</li>
+        <li>A View envia os dados para o Template</li>
+        <li>O Template gera HTML</li>
+        <li>A resposta é enviada ao utilizador</li>
+    </ol>
+
+    <h3>Vídeo Tutorial</h3>
+    <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/SEU_VIDEO"
+        allowfullscreen>
+    </iframe>
+</section>
+
+<!-- ===================================================== -->
+<section id="modelacao">
+    <h2>2. Modelação</h2>
+
+    <h3>Diagrama Entidade-Relação</h3>
+    <img src="/media/makingof/V3.jpeg" alt="Diagrama ER">
+
+    <h3>models.py</h3>
 
 <pre>
-class Morada(models.Model):
-    rua = models.CharField(max_length=100)
-    localidade = models.CharField(max_length=100)
-    familia = models.OneToOneField(
-        Familia,
-        on_delete=models.CASCADE,
-        related_name='morada'
-    )
+class Licenciatura(models.Model):
+    nome = models.CharField(max_length=255)
 
-class Familia(models.Model):
-    nome = models.CharField(max_length=100)
+class UnidadeCurricular(models.Model):
+    nome = models.CharField(max_length=255)
+    licenciaturas = models.ManyToManyField(Licenciatura)
 
-class Aluno(models.Model):
-    nome = models.CharField(max_length=100)
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=255)
+    uc = models.ForeignKey(UnidadeCurricular, on_delete=models.SET_NULL, null=True)
+
+class Tecnologia(models.Model):
+    nome = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=50)
 </pre>
 
-<h3>Explicação</h3>
-<p>
-A aplicação utiliza várias entidades como Morada, Família e Aluno.
-A relação entre Morada e Família é de um para um (OneToOne), ou seja,
-cada família tem apenas uma morada associada.
-</p>
-
-<p>
-Também podem existir relações muitos-para-muitos (N:N), como por exemplo
-entre Aluno e Disciplina.
-</p>
-
-<hr>
+    <p>
+    Os modelos foram definidos utilizando Django ORM, permitindo representar
+    as entidades da aplicação e as suas relações. Foram utilizadas relações
+    do tipo ManyToMany e ForeignKey para modelar ligações entre entidades.
+    </p>
+</section>
 
 <!-- ===================================================== -->
-<h2 id="tecnologias">3. Tecnologias</h2>
+<section id="tecnologias">
+    <h2>3. Tecnologias</h2>
 
-<ul>
-    <li>Django (Backend)</li>
-    <li>HTML (Frontend)</li>
-    <li>CSS (Frontend)</li>
-    <li>SQLite (Base de dados)</li>
-    <li>Git (Controlo de versões)</li>
-    <li>GitHub (Repositório)</li>
-</ul>
+  {% regroup tecnologias by tipo as tecnologias_por_tipo %}
 
-<hr>
+{% for grupo in tecnologias_por_tipo %}
 
-<!-- ===================================================== -->
-<h2 id="estrutura">4. Estrutura das Páginas</h2>
+    {% if grupo.grouper %}
+        <article class="tipo-bloco">
+            <h3 class="tipo-titulo">{{ grupo.grouper }}</h3>
 
-<img src="/media/mapa.jpg" alt="Mapa de navegação">
+            <div class="tech-grid">
+                {% for t in grupo.list %}
+                    <div class="tech-card">
+                        <h4>{{ t.nome }}</h4>
+                        <p><b>Nível:</b> {{ t.nivel }}/5</p>
+                        <p class="descricao">{{ t.aspetosRelavantes }}</p>
+                    </div>
+                {% endfor %}
+            </div>
 
-<p>
-A aplicação está organizada em várias páginas interligadas.
-</p>
+        </article>
+    {% endif %}
 
-<hr>
-
-<!-- ===================================================== -->
-<h2 id="github">5. Repositório GitHub</h2>
-
-<a href="https://github.com/teu_user/teu_repo" target="_blank">
-    Ver Repositório
-</a>
-
-<p>
-O GitHub foi utilizado para guardar o projeto, controlar versões
-e facilitar o desenvolvimento.
-</p>
-
-<hr>
+{% endfor %}
+</section>
 
 <!-- ===================================================== -->
-<h2 id="makingof">6. Making-Of</h2>
+<section id="estrutura">
+    <h2>4. Estrutura das Páginas</h2>
 
-<p>
-Este projeto foi desenvolvido no âmbito da disciplina de Programação Web.
-Ao longo do desenvolvimento foram registadas várias etapas e desafios.
-</p>
+    <p>A aplicação é composta pelas seguintes páginas:</p>
+
+    <ul>
+        <li>Licenciaturas</li>
+        <li>Unidades Curriculares (UCs)</li>
+        <li>Docentes</li>
+        <li>Tecnologias</li>
+        <li>Projetos</li>
+        <li>TFCs</li>
+        <li>Eventos</li>
+        <li>Formação</li>
+        <li>Competências</li>
+        <li>Sobre a Aplicação</li>
+    </ul>
+</section>
+
+<!-- ===================================================== -->
+<section id="github">
+    <h2>5. Repositório GitHub</h2>
+
+    <a href="https://github.com/a22405789NidhiMogatlal/portfolio" target="_blank">
+        Ver Repositório
+    </a>
+
+    <p>
+    O GitHub foi utilizado para guardar o projeto, controlar versões
+    e facilitar o desenvolvimento.
+    </p>
+</section>
+
+<!-- ===================================================== -->
+<section id="makingof">
+    <h2>6. Making-Of</h2>
+
+    <p>
+    Este projeto foi desenvolvido no âmbito da disciplina de Programação Web.
+    Ao longo do desenvolvimento foram registadas várias etapas e desafios.
+    </p>
+</section>
+
+</main>
 
 </body>
 </html>

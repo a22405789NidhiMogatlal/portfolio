@@ -204,4 +204,11 @@ def apagar_competencia_view(request,id):
     return redirect('competencias')
 
 def sobre_view(request):
-    return render(request, 'portfolio/sobre.html')
+    tecnologias = Tecnologia.objects.filter(
+        nome__in=['Django', 'Python', 'HTML', 'CSS', 'Git', 'GitHub']
+    )
+
+    return render(request, 'portfolio/sobre.html', {
+        'tecnologias': tecnologias
+    })
+

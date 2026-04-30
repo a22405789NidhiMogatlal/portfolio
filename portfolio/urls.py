@@ -47,4 +47,5 @@ urlpatterns = [
     path('evento/<int:id>/', views.evento_view, name='evento'),
 
     path('sobre/', views.sobre_view, name='sobre'),
+   
 ]
