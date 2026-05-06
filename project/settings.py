@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "portfolio",
     'django_extensions',
+    'accounts',
 ]
 
 MIDDLEWARE = [
