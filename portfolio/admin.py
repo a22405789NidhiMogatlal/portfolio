@@ -81,3 +81,4 @@ admin.site.register(Formacao,FormacaoAdmin)
 admin.site.register(MakingOf,MakingOfAdmin)
 admin.site.register(Evento,EventoAdmin)
 
+
