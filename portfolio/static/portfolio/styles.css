@@ -1,104 +1,176 @@
-/* Reset básico */
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f4f6fb;
+/* ===== RESET ===== */
+
+* {
     margin: 0;
     padding: 0;
-    color: #2c2c2c;
+    box-sizing: border-box;
 }
 
-/* Container principal */
-body > *:not(header) {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
+/* ===== BODY ===== */
 
-/* Título principal */
-h1 {
-    text-align: center;
-    margin-top: 30px;
-    color: #3b3b6d;
-}
-
-/* Secções */
-h2 {
-    margin-top: 50px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #dcdcf5;
-    color: #4a4a7d;
-}
-
-/* Subtítulos */
-h3 {
-    margin-top: 25px;
-    color: #5a5a89;
-}
-
-/* Listas */
-ul, ol {
-    margin-top: 10px;
-    padding-left: 25px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffdf7;
+    color: #4b4636;
     line-height: 1.6;
 }
 
-/* Blocos de conteúdo */
-section {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
+/* ===== HEADER ===== */
+
+header {
+    background-color: #f8e7b5;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #7a5c00;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== NAV ===== */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #6a5400;
+    background-color: #fff6d8;
+    padding: 0.7rem 1.2rem;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    font-weight: 500;
 }
 
-/* Imagens */
-img {
+nav a:hover {
+    background-color: #f3d36c;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== LOGIN INFO ===== */
+
+header span {
     display: block;
-    max-width: 100%;
-    margin: 15px auto;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #6a5400;
+    font-weight: bold;
+}
+
+/* ===== MAIN ===== */
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 3rem auto;
+}
+
+/* ===== TITLES ===== */
+
+h2 {
+    color: #8a6700;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* ===== BUTTONS ===== */
+
+button,
+input[type="submit"] {
+    background-color: #f3d36c;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.4rem;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
 }
 
-/* Vídeo */
-iframe {
-    display: block;
-    margin: 20px auto;
-    border-radius: 10px;
+button:hover,
+input[type="submit"]:hover {
+    background-color: #ddb63f;
 }
 
-/* Tecnologias (cards) */
-.tech-card {
-    background-color: #f9f9ff;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
-    border-left: 4px solid #b8c0ff;
-}
+/* ===== LINKS ===== */
 
-/* Nome tecnologia */
-.tech-card h4 {
-    margin: 0 0 5px 0;
-    color: #3b3b6d;
-}
-
-/* Texto */
-.tech-card p {
-    margin: 3px 0;
-    font-size: 0.95em;
-}
-
-/* Descrição */
-.tech-card .descricao {
-    margin-top: 8px;
-    color: #555;
-}
-
-/* Links */
 a {
-    color: #5a5a89;
+    color: #7a5c00;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* ===== CARDS / ARTICLES ===== */
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+article {
+    background-color: #fff9e8;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+article:hover {
+    transform: translateY(-5px);
+}
+
+article a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #7a5c00;
+}
+
+article p {
+    margin-top: 0.5rem;
+}
+
+/* ===== FORMS ===== */
+
+form {
+    background-color: #fff9e8;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.4rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #e5d28f;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    margin-top: 4rem;
+    background-color: #f8e7b5;
+    text-align: center;
+    padding: 1.2rem;
+    color: #7a5c00;
 }

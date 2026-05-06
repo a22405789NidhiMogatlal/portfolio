@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.http import HttpResponse
@@ -90,6 +91,8 @@ def formacao_view(request, id):
     return render(request, 'portfolio/formacao.html', {'formacao': formacao})  
 
 
+
+@login_required
 def projeto_novo(request):
     form = ProjetoForm(request.POST or None,request.FILES)
 
@@ -101,6 +104,8 @@ def projeto_novo(request):
 
     return render(request,'portfolio/projeto_novo.html',context)
 
+
+@login_required
 def tecnologia_novo_view(request):
     form= TecnologiaForm(request.POST or None,request.FILES)
 
@@ -112,6 +117,8 @@ def tecnologia_novo_view(request):
 
     return render(request, 'portfolio/tecnologia_novos.html', {'form': form})
 
+
+@login_required
 def competencia_novo_view(request):
     form = CompetenciaForm(request.POST or None)
 
@@ -121,6 +128,8 @@ def competencia_novo_view(request):
     context={'form':form}
     return render(request,'portfolio/competencia_novo.html',context)
 
+
+@login_required
 def formacao_novo_view(request):
     form= FormacaoForm(request.POST or None,request.FILES)
 
@@ -132,6 +141,9 @@ def formacao_novo_view(request):
 
     return render(request, 'portfolio/formacao_novo.html', {'form': form})
 
+
+
+@login_required
 def editar_projeto_view(request, id):
 
     projeto=Projeto.objects.get(id=id)
@@ -147,6 +159,9 @@ def editar_projeto_view(request, id):
     context={'projeto':projeto,'form':form}
     return render(request, 'portfolio/projeto_editar.html', context)
 
+
+
+@login_required
 def editar_tecnologia_view(request,id):
     tecnologia= Tecnologia.objects.get(id=id)
 
@@ -161,6 +176,8 @@ def editar_tecnologia_view(request,id):
     context={'tecnologia':tecnologia,'form':form}
     return render(request, 'portfolio/tecnologia_editar.html', context)
 
+
+@login_required
 def editar_competencia_view(request,id):
     competencia = Competencia.objects.get(id=id)
 
@@ -174,6 +191,8 @@ def editar_competencia_view(request,id):
     context={'competencia':competencia,'form':form}
     return render(request,'portfolio/competencia_editar.html',context)
 
+
+@login_required
 def editar_formacao_view(request,id):
     formacao=Formacao.objects.get(id=id)
 
@@ -187,18 +206,22 @@ def editar_formacao_view(request,id):
     context={'formacao':formacao,'form':form}
     return render(request,'portfolio/formacao_editar.html',context)
 
+@login_required
 def apagar_projeto_view(request,id):
     Projeto.objects.get(id=id).delete()
     return redirect('projetos')
 
+@login_required
 def apagar_tecnologia_view(request,id):
     Tecnologia.objects.get(id=id).delete()
     return redirect('tecnologias')
 
+@login_required
 def apagar_formacao_view(request,id):
     Formacao.objects.get(id=id).delete()
     return redirect('formacoes')
 
+@login_required
 def apagar_competencia_view(request,id):
     Competencia.objects.get(id=id).delete()
     return redirect('competencias')
