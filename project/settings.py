@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "portfolio",
     'django_extensions',
     'accounts',
+    'artigos',
 ]
 
 MIDDLEWARE = [
