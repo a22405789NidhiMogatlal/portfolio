@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Artigos</h1>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'criar_artigo' %}">
+        Novo Artigo
+    </a>
+{% endif %}
+
+{% for artigo in artigos %}
+
+    <article>
+
+        <h2>{{ artigo.titulo }}</h2>
+
+        <img src="{{ artigo.fotografia.url }}"
+             alt="{{ artigo.titulo }}"
+             width="300">
+
+        <p>
+            {{ artigo.texto|truncatewords:20 }}
+        </p>
+
+        <p>
+            Autor: {{ artigo.autor.username }}
+        </p>
+
+        <a href="{% url 'detalhe_artigo' artigo.id %}">
+            Ler mais
+        </a>
+
+    </article>
+
+    <hr>
+
+{% empty %}
+
+    <p>Não existem artigos.</p>
+
+{% endfor %}
+
+{% endblock %}

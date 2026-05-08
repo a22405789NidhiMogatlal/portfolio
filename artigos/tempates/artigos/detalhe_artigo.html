@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1>{{ artigo.titulo }}</h1>
+
+    <img src="{{ artigo.fotografia.url }}"
+         class="img-fluid mb-4"
+         alt="{{ artigo.titulo }}">
+
+    <p>
+        {{ artigo.texto }}
+    </p>
+
+    <p>
+        <strong>Autor:</strong>
+        {{ artigo.autor.username }}
+    </p>
+
+    <p>
+        <strong>Data:</strong>
+        {{ artigo.data_criacao }}
+    </p>
+
+    {% if artigo.link_externo %}
+        <a href="{{ artigo.link_externo }}"
+           target="_blank"
+           class="btn btn-info">
+            Link Externo
+        </a>
+    {% endif %}
+
+    <hr>
+
+    <h4>Likes: {{ artigo.total_likes }}</h4>
+
+    <form method="POST"
+          action="{% url 'like_artigo' artigo.id %}">
+
+        {% csrf_token %}
+
+        <button type="submit"
+                class="btn btn-danger">
+            Gostar
+        </button>
+
+    </form>
+
+    <hr>
+
+    {% if user == artigo.autor %}
+        <a href="{% url 'editar_artigo' artigo.id %}"
+           class="btn btn-warning">
+            Editar Artigo
+        </a>
+    {% endif %}
+
+    <hr>
+
+    <h3>Comentários</h3>
+
+    {% for comentario in comentarios %}
+
+        <div class="card mb-3">
+
+            <div class="card-body">
+
+                <strong>
+                    {{ comentario.autor.username }}
+                </strong>
+
+                <p>
+                    {{ comentario.texto }}
+                </p>
+
+                <small>
+                    {{ comentario.data_criacao }}
+                </small>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <p>Sem comentários.</p>
+
+    {% endfor %}
+
+    <hr>
+
+    {% if user.is_authenticated %}
+
+        <h4>Adicionar Comentário</h4>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Comentar
+            </button>
+
+        </form>
+
+    {% else %}
+
+        <p>
+            Tens de fazer login para comentar.
+        </p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
