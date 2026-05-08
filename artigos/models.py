@@ -19,16 +19,9 @@ class Artigo(models.Model):
 
 
 class Comentario(models.Model):
-    artigo = models.ForeignKey(
-        Artigo,
-        on_delete=models.CASCADE,
-        related_name='comentarios'
-    )
+    artigo = models.ForeignKey(Artigo,on_delete=models.CASCADE,related_name='comentarios')
 
-    autor = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
+    autor = models.ForeignKey(User,on_delete=models.CASCADE)
 
     texto = models.TextField()
 
