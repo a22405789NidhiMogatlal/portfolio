@@ -28,7 +28,6 @@ def registo_view(request):
 
 def criar_artigo_view(request):
 
-
     if not request.user.groups.filter(name='autores').exists():
         return redirect('lista_artigos')
 

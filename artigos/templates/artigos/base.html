@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Artigos</title>
+
+    <link rel="stylesheet"
+          href="{% static 'artigos/styles.css' %}">
+</head>
+
+<body>
+
+<nav class="menu">
+
+    <a href="{% url 'lista_artigos' %}">
+        Artigos
+    </a>
+
+</nav>
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+</body>
+</html>

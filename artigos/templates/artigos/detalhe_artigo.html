@@ -1,0 +1,127 @@
+{% extends 'artigos/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1>{{ artigo.titulo }}</h1>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'lista_artigos' %}">
+                    Voltar aos Artigos
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section>
+
+    {% if artigo.fotografia %}
+        <img src="{{ artigo.fotografia.url }}"
+             alt="{{ artigo.titulo }}">
+    {% endif %}
+
+    <p>{{ artigo.texto }}</p>
+
+    <p>
+        <b>Autor:</b> {{ artigo.autor.username }}
+    </p>
+
+    <p>
+        <b>Data:</b> {{ artigo.data_criacao }}
+    </p>
+
+    {% if artigo.link_externo %}
+        <p>
+            <a href="{{ artigo.link_externo }}" target="_blank">
+                Ler mais
+            </a>
+        </p>
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>Gostos</h2>
+
+    <p>{{ artigo.total_likes }} gostos</p>
+
+    <form method="POST"
+          action="{% url 'like_artigo' artigo.pk %}">
+
+        {% csrf_token %}
+
+        <button type="submit">
+            Gostar
+        </button>
+
+    </form>
+
+</section>
+
+{% if user == artigo.autor %}
+
+<section>
+
+    <a href="{% url 'editar_artigo' artigo.pk %}">
+        Editar Artigo
+    </a>
+
+</section>
+
+{% endif %}
+
+<section>
+
+    <h2>Comentários</h2>
+
+    {% for comentario in comentarios %}
+
+        <article class="comentario">
+
+            <h3>{{ comentario.autor.username }}</h3>
+
+            <p>{{ comentario.texto }}</p>
+
+            <small>{{ comentario.data_criacao }}</small>
+
+        </article>
+
+    {% empty %}
+
+        <p>Sem comentários.</p>
+
+    {% endfor %}
+
+</section>
+
+{% if user.is_authenticated %}
+
+<section>
+
+    <h2>Adicionar Comentário</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Comentar
+        </button>
+
+    </form>
+
+</section>
+
+{% endif %}
+
+</main>
+
+{% endblock %}

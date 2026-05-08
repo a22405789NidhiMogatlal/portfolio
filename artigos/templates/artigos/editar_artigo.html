@@ -1,0 +1,30 @@
+{% extends 'artigos/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1>Criar Artigo</h1>
+</header>
+
+<main>
+
+<section>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Publicar
+        </button>
+
+    </form>
+
+</section>
+
+</main>
+
+{% endblock %}
