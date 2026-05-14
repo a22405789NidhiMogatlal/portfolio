@@ -138,3 +138,13 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
+# inicializar environ
+env = environ.Env()
+
+# ler ficheiro .env (opcional mas recomendado)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+## definicao da base de dados psql em Neon
+DATABASES = {
+    "default": env.db("DATABASE_URL")
+}
