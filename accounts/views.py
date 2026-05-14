@@ -46,13 +46,7 @@ def envia_email(user, email):
     send_mail(
         subject='Portfolio: Autenticação',
 
-        message=f'''
-Olá {user.username},
-
-Clique no link:
-
-http://127.0.0.1:8000/accounts/autentica/?token={user.perfil.token}
-''',
+        message = f'Olá {user.username}, Clique no link: https://laughing-trout-jjgj5r6gxjjw2qx57-8000.app.github.dev/accounts/autentica/?token={user.perfil.token}',
 
         from_email='admin@portfolio.com',
 
@@ -79,8 +73,4 @@ def login_magic_link(request):
 
         return HttpResponse("Email enviado com sucesso ")
 
-    return render(
-        request,
-        'accounts/magic_login.html',
-        {'mensagem': 'Email não existe'}
-    )
+    return render(request,'accounts/magic_login.html', {'mensagem': 'Email não existe'})

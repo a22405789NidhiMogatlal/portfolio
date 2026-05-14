@@ -1,3 +1,4 @@
+import environ
 import os
 
 
@@ -44,8 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "portfolio",
     'django_extensions',
+    "portfolio",
     'accounts',
     'artigos',
 ]
@@ -135,3 +136,5 @@ MEDIA_URL = '/media/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
