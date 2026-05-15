@@ -1,0 +1,165 @@
+/* RESET */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6fb;
+    margin: 0;
+    padding: 0;
+    color: #2c2c2c;
+}
+
+/* HEADER */
+header {
+    background-color: #dfe3ff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título */
+header h1 {
+    margin-bottom: 10px;
+    color: #3b3b6d;
+}
+
+/* MENU */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #2c2c2c;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #c7d2fe;
+}
+
+/* CONTEÚDO */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* SECÇÕES */
+section {
+    background-color: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* TÍTULOS */
+h2 {
+    border-bottom: 2px solid #e0e3ff;
+    padding-bottom: 5px;
+    color: #4a4a7d;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #5a5a89;
+}
+
+
+/* LISTAS */
+ul, ol {
+    padding-left: 25px;
+    line-height: 1.6;
+}
+
+/* IMAGENS */
+img {
+    display: block;
+    max-width: 100%;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+/* VÍDEO */
+iframe {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+/* ========================= */
+/* TECNOLOGIAS */
+/* ========================= */
+
+/* BLOCO DO TIPO */
+.tipo-bloco {
+    background-color: #e6e9ff;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 25px;
+}
+
+/* TÍTULO DO TIPO */
+.tipo-titulo {
+    margin-bottom: 15px;
+    color: #3f3f8f;
+}
+
+/* GRID */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+/* CARD */
+.tech-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+/* HOVER */
+.tech-card:hover {
+    transform: translateY(-3px);
+}
+
+/* NOME */
+.tech-card h4 {
+    margin-bottom: 6px;
+    color: #2c2c2c;
+}
+
+/* TEXTO */
+.tech-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+/* DESCRIÇÃO */
+.descricao {
+    margin-top: 8px;
+    color: #555;
+}
+
+/* LINKS */
+a {
+    color: #4a4a7d;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* SCROLL SUAVE */
+html {
+    scroll-behavior: smooth;
+}

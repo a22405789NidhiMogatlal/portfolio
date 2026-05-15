@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f7fb;
+    color: #2b2d42;
+    line-height: 1.6;
+}
+
+/* ========================= */
+/* MENU */
+/* ========================= */
+
+.menu {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid #dbe2ea;
+    text-align: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #2b2d42;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: #4f46e5;
+}
+
+/* ========================= */
+/* CONTEÚDO */
+/* ========================= */
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ========================= */
+/* CARDS */
+/* ========================= */
+
+section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+/* ========================= */
+/* TÍTULOS */
+/* ========================= */
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #334155;
+}
+
+h3 {
+    margin-bottom: 10px;
+    color: #475569;
+}
+
+/* ========================= */
+/* TEXTO */
+/* ========================= */
+
+p {
+    margin-bottom: 15px;
+}
+
+/* ========================= */
+/* IMAGENS */
+/* ========================= */
+
+img {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+/* ========================= */
+/* LINKS */
+/* ========================= */
+
+a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/* BOTÕES */
+/* ========================= */
+
+button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #4338ca;
+}
+
+/* ========================= */
+/* FORMULÁRIOS */
+/* ========================= */
+
+form p {
+    margin-bottom: 20px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* ========================= */
+/* COMENTÁRIOS */
+/* ========================= */
+
+.comentario {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #4f46e5;
+    margin-top: 15px;
+}
+
+/* ========================= */
+/* META INFO */
+/* ========================= */
+
+.meta {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
