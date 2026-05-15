@@ -1,3 +1,5 @@
 venv/
 .env
 dados_ordenado.json
+staticfiles/
+migra_ficheiros.py
